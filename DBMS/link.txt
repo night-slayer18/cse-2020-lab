@@ -1,0 +1,317 @@
+wget 172.16.22.22/sqld.zip
+wget 172.16.22.22/datan.zip
+
+
+sqlplus CS21620/715514@172.16.1.11/csdb
+SQL> SET AUTOCOMMIT ON
+SQL> SET LINESIZE 200 
+172.16.22.22:5555/user
+
+SQL> CREATE TABLE EMPLOYEE(E_NO VARCHAR(8) CHECK(E_NO LIKE 'E%'),E_NAME VARCHAR(15) NOT NULL,SALARY INT,DEPT_NO INT REFERENCES DEPARTMENT(DNO),MGR_NO INT,DOJ DATE,DESG VARCHAR(15),ADDRESS VARCHAR(15),CITY VARCHAR(10),PINCODE INT,PRIMARY KEY(E_NO),CHECK(SALARY>0 AND CITY IN('KOCHI','MUMBAI','DELHI','CHENNAI')));
+
+Table created.
+SQL>DESCRIBE EMPLOYEE                
+Name                Null?    Type
+ -----------------------------------------------------------------
+ E_NO		        NOT NULL VARCHAR2(8)
+ E_NAME 		    NOT NULL VARCHAR2(15)
+ SALARY 			         NUMBER(38)
+ DEPT_NO					 NUMBER(38)
+ MGR_NO 					 NUMBER(38)
+ DOJ						 DATE
+ DESG						 VARCHAR2(15)
+ ADDRESS					 VARCHAR2(15)
+ CITY						 VARCHAR2(10)
+ PINCODE					 NUMBER(38)
+ 
+SQL> INSERT INTO EMPLOYEE VALUES('E0','RAJU',10000,5,1000,'22-JAN-2016','HOD','ZXCVBN','KOCHI',6113);
+
+1 row created.
+
+Commit complete.
+SQL> INSERT INTO EMPLOYEE VALUES('E1','BIJU',12000,4,1001,'22-FEB-2018','STAFF','BYEBYE','MUMBAI',6114);
+
+1 row created.
+
+Commit complete.
+SQL> INSERT INTO EMPLOYEE VALUES('E2','SASI',15000,4,1002,'22-MAR-2014','STAFF','QWERTY','CHENNAI',6115);
+
+1 row created.
+
+Commit complete.
+SQL> INSERT INTO EMPLOYEE VALUES('E3','VIRAT',25000,3,1003,'12-MAY-2014','TEACHER','ASDFGHJ','DELHI',6116);
+
+1 row created.
+
+Commit complete.
+SQL> INSERT INTO EMPLOYEE VALUES('E4','ROHIT',900,10,1004,'12-SEP-2020','TEACHER','HJDHFWER','KOCHI',6117);
+
+1 row created.
+
+Commit complete.
+SQL> INSERT INTO EMPLOYEE VALUES('E5','CHAHAL',800,10,1005,'22-SEP-2021','TEACHER','YDVHDJK','MUMBAI',6118);
+
+1 row created.
+
+Commit complete.
+SQL> INSERT INTO EMPLOYEE VALUES('E6','RAINA',8000,30,1005,'02-DEC-2025','HOD','XYZ STREET','CHENNAI',6119);
+
+1 row created.
+
+Commit complete.
+SQL> INSERT INTO EMPLOYEE VALUES('E7','SAMUEL',13000,30,1006,'02-NOV-2024','HOD','WWW STREET','DELHI',6120);
+
+1 row created.
+
+Commit complete.
+SQL> INSERT INTO EMPLOYEE VALUES('E8','SAM',13000,30,NULL,'02-NOV-2023','HOD','ABC STREET','CHENNAI',6121);
+
+1 row created.
+
+Commit complete.
+SQL> INSERT INTO EMPLOYEE VALUES('E9','JENNI',13000,30,1007,'02-NOV-2013','HOD','ABC STREET','MUMBAI',6122);
+
+1 row created.
+
+Commit complete.
+SQL> SELECT * FROM EMPLOYEE
+  2  ;
+
+E_NO	 E_NAME 	     SALARY    DEPT_NO	   MGR_NO DOJ	    DESG	    ADDRESS	    CITY	  PINCODE
+-------- --------------- ---------- ---------- ---------- --------- --------------- --------------- ---------- ----------
+E0	 RAJU		      10000	     5	        1000 22-JAN-16      HOD 	   ZXCVBN	    KOCHI	 6113
+E1	 BIJU		      12000	     4	        1001 22-FEB-18 STAFF	        BYEBYE	    MUMBAI	     6114
+E2	 SASI		      15000	     4	        1002 22-MAR-14 STAFF	        QWERTY	    CHENNAI	     6115
+E3	 VIRAT		      25000	     3	        1003 12-MAY-14 TEACHER	        ASDFGHJ	    DELHI	     6116
+E4	 ROHIT			    900	    10	        1004 12-SEP-20 TEACHER	    HJDHFWER	    KOCHI	     6117
+E5	 CHAHAL 		    800	    10	        1005 22-SEP-21 TEACHER	    YDVHDJK	    MUMBAI	     6118
+E6	 RAINA		       8000	    30	        1005 02-DEC-25 HOD 	    XYZ STREET	    CHENNAI	     6119
+E7	 SAMUEL 	      13000	    30	        1006 02-NOV-24 HOD 	    WWW STREET	    DELHI	     6120
+E8	 SAM		      13000	    30		         02-NOV-23 HOD 	        ABC STREET	    CHENNAI	     6121
+E9	 JENNI		      13000	    30	        1007 02-NOV-13 HOD 	    ABC STREET	    MUMBAI	     6122
+
+10 rows selected.
+
+
+CREATE TABLE DEPARTMENT(DNO INT PRIMARY KEY,DNAME VARCHAR(15) NOT NULL,EMP_COUNT INT,EMPT_HEAD VARCHAR(15));
+Table created.
+
+SQL>DESCRIBE DEPARTMENT
+ Name					   Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ DNO					   NOT NULL NUMBER(38)
+ DNAME					   NOT NULL VARCHAR2(15)
+ EMP_COUNT					        NUMBER(38)
+ DEPT_HEAD					        VARCHAR2(15)
+ 
+SQL> INSERT INTO DEPARTMENT VALUES(5,'CSE',20,'RAHUL JOSE');
+
+1 row created.
+
+Commit complete.
+SQL> INSERT INTO DEPARTMENT VALUES(4,'ECE',10,'JOSE BEN');
+
+1 row created.
+
+Commit complete.
+SQL> INSERT INTO DEPARTMENT VALUES(3,'EEE',12,'SACHIN T');
+
+1 row created.
+
+Commit complete.
+SQL> INSERT INTO DEPARTMENT VALUES(2,'EIE',9,'ROSHAN');
+
+1 row created.
+
+Commit complete.
+SQL> INSERT INTO DEPARTMENT VALUES(1,'CSD',15,'SALVIN SIBY');
+
+1 row created.
+
+Commit complete.
+SQL> INSERT INTO DEPARTMENT VALUES(10,'SALES',10,'VYSHAKH');
+
+1 row created.
+
+Commit complete.
+SQL> INSERT INTO DEPARTMENT VALUES(30,'MARKET',10,'NAVNEETH');
+
+1 row created.
+
+Commit complete.
+
+
+
+
+SQL> SELECT * FROM DEPARTMENT;
+
+       DNO DNAME	    EMP_COUNT DEPT_HEAD
+---------- --------------- ---------- ---------------
+	 5 CSE			   20 RAHUL JOSE
+	 4 ECE			   10 JOSE BEN
+	 3 EEE			   12 SACHIN T
+	 2 EIE			    9 ROSHAN
+	 1 CSD			   15 SALVIN SIBY
+	10 SALES		   10 VYSHAKH
+	30 MARKET		   10 NAVNEETH
+
+
+QUERIES
+
+1.
+SQL> SELECT E_NAME FROM EMPLOYEE WHERE DOJ>'01-MAR-2020' AND DEPT_NO=10;
+
+E_NAME
+---------------
+ROHIT
+CHAHAL
+
+
+2.
+SQL> SELECT * FROM EMPLOYEE WHERE DEPT_NO!=30;
+
+E_NO	 E_NAME 	     SALARY    DEPT_NO	   MGR_NO DOJ	    DESG	    ADDRESS	    CITY	  PINCODE
+-------- --------------- ---------- ---------- ---------- --------- --------------- --------------- ---------- ----------
+E0	 RAJU		      10000	     5	     1000 22-JAN-16 HOD 	    ZXCVBN	    KOCHI	     6113
+E1	 BIJU		      12000	     4	     1001 22-FEB-18 STAFF	    BYEBYE	    MUMBAI	     6114
+E2	 SASI		      15000	     4	     1002 22-MAR-14 STAFF	    QWERTY	    CHENNAI	     6115
+E3	 VIRAT		      25000	     3	     1003 12-MAY-14 TEACHER	    ASDFGHJ	    DELHI	     6116
+E4	 ROHIT			    900	    10	     1004 12-SEP-20 TEACHER	    HJDHFWER	KOCHI	     6117
+E5	 CHAHAL 		    800	    10	     1005 22-SEP-21 TEACHER	    YDVHDJK	    MUMBAI	     6118
+
+6 rows selected.
+
+3.
+SQL> SELECT E_NAME FROM EMPLOYEE,DEPARTMENT WHERE DEPT_NO=DNO AND DNAME='SALES';
+
+E_NAME
+---------------
+ROHIT
+CHAHAL
+
+4.
+SQL> SELECT E_NAME FROM EMPLOYEE WHERE MGR_NO IS NULL;
+
+E_NAME
+---------------
+SAM
+
+
+5.
+SQL> SELECT E_NAME FROM EMPLOYEE WHERE E_NAME LIKE 'J_N%';
+
+E_NAME
+---------------
+JENNI
+
+6.
+
+SQL> SELECT * FROM EMPLOYEE WHERE DOJ BETWEEN '01-JAN-2020' AND '31-DEC-2020';
+
+E_NO	 E_NAME 	     SALARY    DEPT_NO	   MGR_NO DOJ	    DESG	    ADDRESS	    CITY	  PINCODE
+-------- --------------- ---------- ---------- ---------- --------- --------------- --------------- ---------- ----------
+E4	 ROHIT			900	    10	     1004 12-SEP-20 TEACHER	    HJDHFWER	    KOCHI	     6117
+
+7.
+SQL> SELECT 'EVERY YEAR '||E_NAME||' EARNS '||SALARY AS SALARY FROM EMPLOYEE;
+
+SALARY
+-------------------------------------------------------------------------
+EVERY YEAR RAJU EARNS 10000
+EVERY YEAR BIJU EARNS 12000
+EVERY YEAR SASI EARNS 15000
+EVERY YEAR VIRAT EARNS 25000
+EVERY YEAR ROHIT EARNS 900
+EVERY YEAR CHAHAL EARNS 800
+EVERY YEAR RAINA EARNS 8000
+EVERY YEAR SAMUEL EARNS 13000
+EVERY YEAR SAM EARNS 13000
+EVERY YEAR JENNI EARNS 13000
+
+10 rows selected.
+
+8.
+SQL> SELECT COUNT(*) FROM EMPLOYEE;
+
+  COUNT(*)
+----------
+	10
+
+9.
+SQL> SELECT DESG,MIN(SALARY) FROM EMPLOYEE GROUP BY DESG;
+
+DESG		MIN(SALARY)
+--------------- -----------
+TEACHER 		900
+CLERK		      13000
+HOD			800
+STAFF		      15000
+
+
+10.
+10 rows selected.
+
+SQL> SELECT E_NAME,DEPT_NO,DESG,SALARY FROM EMPLOYEE WHERE (DEPT_NO,DESG,SALARY) IN (SELECT DEPT_NO,DESG,MIN(SALARY) FROM EMPLOYEE GROUP BY DEPT_NO,DESG) AND SALARY>1000;
+
+E_NAME		   DEPT_NO DESG 	       SALARY
+--------------- ---------- --------------- ----------
+RAINA			30    HOD			 8000
+SAM			    30    CLERK		    13000
+JENNI			30    CLERK		    13000
+BIJU			 4    HOD			12000
+SASI			 4    STAFF		    15000
+VIRAT			 3    TEACHER		25000
+SAMUEL			30    CLERK		    13000
+RAJU			 5    HOD			10000
+
+11.
+SQL> SELECT DEPT_NO,MIN(SALARY) FROM(SELECT * FROM EMPLOYEE WHERE DESG='HOD') GROUP BY DEPT_NO;        
+
+   DEPT_NO MIN(SALARY)
+---------- -----------
+	30	 49228
+	 5	 10000
+	 4	 12000
+	10	   800
+
+
+    
+12.SQL> SELECT E_NAME,DNAME FROM EMPLOYEE,DEPARTMENT WHERE DEPT_NO=DNO AND MGR_NO IS NOT NULL;
+
+E_NAME		DNAME
+--------------- ---------------
+RAJU		CSE
+BIJU		ECE
+SASI		ECE
+VIRAT		EEE
+ROHIT		SALES
+CHAHAL		SALES
+RAINA		MARKET
+SAMUEL		MARKET
+JENNI		MARKET
+
+9 rows selected.
+
+
+
+
+13.SQL> SELECT E_NAME,TO_CHAR(DOJ,'DD-MM-YY') AS DATE_JOI FROM EMPLOYEE;
+
+E_NAME		DATE_JOI
+--------------- --------
+RAJU		22-01-16
+BIJU		22-02-18
+SASI		22-03-14
+VIRAT		12-05-14
+ROHIT		12-09-20
+CHAHAL		22-09-21
+RAINA		02-12-25
+SAMUEL		02-11-24
+SAM		    02-11-23
+JENNI		02-11-13
+
+10 rows selected.
+
+
+
+
