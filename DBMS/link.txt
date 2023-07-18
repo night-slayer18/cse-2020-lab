@@ -1,8 +1,3 @@
-wget 172.16.22.22/sqld.zip
-wget 172.16.22.22/datan.zip
-
-
-sqlplus CS21620/715514@172.16.1.11/csdb
 SQL> SET AUTOCOMMIT ON
 SQL> SET LINESIZE 200 
 172.16.22.22:5555/user
