@@ -1,0 +1,12 @@
+BEGIN{
+	data=0
+}
+{
+	if($1=="r")
+	{
+		data++
+	}
+}
+END{
+	print(data)
+}
