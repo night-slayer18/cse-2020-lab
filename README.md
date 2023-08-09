@@ -7,7 +7,7 @@ This repository is open for contributions, and we encourage you to add your prog
 If you have a program or code that you would like to share, follow these steps to contribute to this repository:
 
 1. Fork this repository by clicking on the **Fork** button at the top right corner of the page. This will create a copy of the repository in your GitHub account.
-2. Clone the forked repository to your local machine using the following command: git clone https://github.com/your-username/cse-2019-lab.git
+2. Clone the forked repository to your local machine using the following command: git clone https://github.com/night-slayer18/cse-2019-lab.git
 3. Create a new branch for your contribution. It is recommended to use a descriptive branch name that reflects the purpose of your changes. For example: git checkout -b add-new-program
 4.  Add your program files or code snippets to the repository. You can organize them in a meaningful way, create new directories if needed, and ensure that your code is well-documented.
 5. Commit your changes with a clear and concise commit message: git commit -m "Add new program: [Program Name]"
