@@ -1,6 +1,6 @@
 # Welcome to the Repository!
 
-This repository is open for contributions, and we encourage you to add your programs and code snippets. We believe in the power of collaboration and sharing knowledge within the programming community.
+This repository is open for contributions, and we encourage you to add your programs and code snippets. We believe in the power of collaboration and sharing knowledge within the programming community. This Repo contains the programs for KTU CSE 2019 Scheme Lab.
 
 ## How to Contribute
 
