@@ -10,7 +10,7 @@ class Charoccur
 		Scanner sc=new Scanner(System.in);
 		str=sc.nextLine();
 		len=str.length();
-		System.out.println("enter the character to be searched");
+		System.out.println("\nenter the character to be searched");
 		c=sc.nextLine().charAt(0);
 		for(i=0;i<len-1;i++)
 		{

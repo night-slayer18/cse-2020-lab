@@ -1,117 +1,115 @@
 import java.util.*;
 class Doubly
 {
-	Scanner sc = new Scanner(System.in);
+	Scanner sc=new Scanner(System.in);
 	class Node
 	{
 		int data;
 		Node next,prev;
 	}
-	Node head,tail,temp;
-	Doubly()
-	{
-		head=null;tail=null;
-	}
-	void insertitem()
+	Node head=null,tail=null,temp;
+	void insertion()
 	{
 		int item;
 		Node n = new Node();
-		System.out.println("enter the data:");
+		System.out.println("Enter the data:");
 		item=sc.nextInt();
 		n.data=item;
 		n.next=null;
 		n.prev=tail;
-		if(tail!=null)
+		if(tail==null)
 		{
-			tail.next=n;
-		}
-		else 
 			head=n;
-		tail=n;
-	}
-	void deleteitem()
-	{
-		if(head==null && tail==null)
-		{
-			System.out.println("list is empty");
+			tail=n;
 		}
 		else
 		{
-		
-			int item,flag=0;
-			System.out.println("enter the item to be deleted:");
-			item=sc.nextInt();
-			temp=head;
-			while(temp!=null && temp.data!=item)
-			{
-				temp=temp.next;
-			}
-			if(temp==null)
-				System.out.println("element not found");
-			else if(temp.next==null && temp.prev==null)
-			{
-				head=null;
-				tail=null;
-			}
-			else if(temp.prev!=null && temp.next!=null)
-			{
-				temp.prev.next=temp.next;
-				temp.next.prev=temp.prev;
-			}
-			else if(temp.next==null)
-			{
-				temp.prev.next=null;
-				tail=temp.prev;
-			}
-			else
-			{
-				temp.next.prev=null;
-				head=temp.next;
-			}
+			tail.next=n;
+			tail=n;
 		}
 	}
+	void deletion()
+	{
+	 	int d;
+	 	System.out.println("enter the element to be deleted");
+	 	d=sc.nextInt();
+	 	temp=head;
+	 	while(temp!=null && temp.data!=d)
+	 	{
+	 		temp=temp.next;
+	 	}
+	 	if(temp==null)
+	 	{
+	 		System.out.println("element not found");
+	 	}
+	 	else if(temp.next!=null && temp.prev!=null)
+	 	{
+	 		temp.prev.next=temp.next;
+	 		temp.next.prev=temp.prev;
+	 	}
+	 	else if(temp.next==null && temp.prev==null)
+	 	{
+	 		head=null;
+	 		tail=null;
+	 	}
+	 	else if(temp.prev==null)
+	 	{
+	 		head=temp.next;
+	 		temp.next.prev=null;
+	 	}
+	 	else if(temp.next==null)
+	 	{
+	 		tail=temp.prev;
+	 		temp.prev.next=null;
+	 	}	 		
+	 }
 	void display()
 	{
 		if(head==null)
 		{
-			System.out.println("list is empty");
+			System.out.println("List is empty");
 		}
-		temp=head;
-		while(temp!=null)
+		else
 		{
-			System.out.print(temp.data+"  ");
-			temp=temp.next;
+			temp=head;
+			while(temp!=null)
+			{
+				System.out.print(temp.data+" ");
+				temp=temp.next;
+			}
 		}
-		System.out.println();
 	}
 }
 class DoublyLL
 {
 	public static void main(String args[])
 	{
-		Doubly d = new Doubly();
+		Doubly d= new Doubly();
 		int opt;
-		Scanner s = new Scanner(System.in);
+		Scanner s= new Scanner(System.in);
 		do
 		{
-			System.out.println("\n1.INSERT\n2.DISPLAY\n3.DELETE\n4.EXIT\n");
+			System.out.println("\n1.INSERTION\n2.DELETION\n3.DISPLAY\n4.EXIT\n");
+			System.out.println("enter the option:");
 			opt=s.nextInt();
 			switch(opt)
 			{
-				case 1: 
-					d.insertitem();
-					break;
-				case 2:	
-					d.display();
-					break;
-				case 3:	
-					d.deleteitem();
-					break;
-				case 4: 
-					break;
+				case 1:	
+						d.insertion();
+						break;
+				case 2:
+						d.deletion();
+						break;
+				case 3:
+						d.display();
+						break;
+				case 4:
+						break;
 				default:
-					System.out.println("enter a valid input");
+						System.out.println("enter a valid input");
 			}
 		}while(opt!=4);
 	}
-}
+}	
+		
+		
